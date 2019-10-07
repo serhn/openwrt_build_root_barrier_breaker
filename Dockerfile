@@ -11,10 +11,8 @@ RUN git clone -b barrier_breaker https://github.com/openwrt/archive.git
 RUN mv archive barrier_breaker
 WORKDIR /home/dev/barrier_breaker
 RUN git checkout $CC_COMMIT
-WORKDIR /home/dev/barrier_breaker/dl
-RUN wget https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.10.49.tar.xz
-RUN wget https://www.kernel.org/pub/linux/utils/util-linux/v2.24/util-linux-2.24.1.tar.xz
-WORKDIR /home/dev/barrier_breaker
+RUN wget -P dl https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.10.49.tar.xz
+RUN wget -P dl https://www.kernel.org/pub/linux/utils/util-linux/v2.24/util-linux-2.24.1.tar.xz
 RUN scripts/feeds update -a && scripts/feeds install -a
 RUN wget -O .config https://raw.githubusercontent.com/serhn/openwrt_build_root_barrier_breaker/master/configs/wr703n.config && make
 WORKDIR /home/dev/
