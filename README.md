@@ -1,6 +1,6 @@
 # openwrt_build_root_barrier_breaker
 
-Build root for openwrt docker image  barrier_breaker
+Buildroot for openwrt docker image  barrier_breaker
 
 ### Create your docker container:
 
