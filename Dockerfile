@@ -16,9 +16,7 @@ RUN wget https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.10.49.tar.xz
 RUN wget https://www.kernel.org/pub/linux/utils/util-linux/v2.24/util-linux-2.24.1.tar.xz
 WORKDIR /home/dev/barrier_breaker
 RUN scripts/feeds update -a && scripts/feeds install -a
-RUN rm .config
-RUN wget -O .config https://raw.githubusercontent.com/serhn/openwrt_build_root_barrier_breaker/master/configs/wr703n.config
-RUN make V=s
+RUN wget -O .config https://raw.githubusercontent.com/serhn/openwrt_build_root_barrier_breaker/master/configs/wr703n.config && make
 WORKDIR /home/dev/
 USER root
 CMD service ssh start && cd /home/dev/barrier_breaker && su -s /bin/bash dev
